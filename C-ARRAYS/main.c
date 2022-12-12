@@ -3,38 +3,42 @@
 
 int main()
 {
-    int* pointers; //declarando pointer entero
-    int limite; //guardando limite de array
-    int i; //contador loop
-    int suma; //guardar la suma de todos los elementos
+    /* variable declaration. */
+    int *pointers;
+    int arraylimit;
+    int i;
+    int sumtotal;
 
-    printf("Ingresar limite de array: ");
-    scanf("%d", &limite);
+    printf("Enter the array limit: ");
+    scanf("%d", &arraylimit);
 
-    //declarar malloc de memoria
-    pointers = (int*)malloc(limite * sizeof(int));
+    // declare memory malloc
+    pointers = (int *)malloc(arraylimit * sizeof(int));
 
-    //leer array de elementos
-    for (i = 0; i < limite; i++) {
-        printf("Ingresar elemento %02d: ", i + 1);
+    // read array elements
+    for (i = 0; i < arraylimit; i++)
+    {
+        printf("Enter element %02d: ", i + 1);
         scanf("%d", (pointers + i));
     }
 
-    //printear array de elementos
-    printf("\nLos elementos ingresados son:\n");
-    for (i = 0; i < limite; i++) {
+    // Print the array elements
+    printf("\nThe values inputted where:\n");
+    for (i = 0; i < arraylimit; i++)
+    {
         printf("%d\n", *(pointers + i));
     }
 
-    //calcular la suma del array
-    suma = 0; //asignar 0 para evitar numeros basura
-    for (i = 0; i < limite; i++) {
-        suma += *(pointers + i);
+    // calculate the total sum
+    sumtotal = 0; // assign 0 to sumtotal to avoid garbage value
+    for (i = 0; i < arraylimit; i++)
+    {
+        sumtotal += *(pointers + i);
     }
-    printf("La suma del array: %d\n", suma);
+    printf("Sum of the array: %d\n", sumtotal);
 
-    //memoria sin usar
-    free(pointers); //liberar memoria usada.
+    // free memory pointer
+    free(pointers);
 
     return 0;
 }

@@ -1,8 +1,5 @@
-/* 
-funcion: sumatoria()
-esta funcion printeara la suma de 2 numeros
-*/
-
+// Created: 2019-10-10 10:00:00
+// using C-HEADERS\main.c we will create a header file with the functions and include it in the main.c file, later we will compile the main.c file and the header file will be included in the compilation process
 int sumatoria(int x, int y)
 {
     int suma;
@@ -11,11 +8,13 @@ int sumatoria(int x, int y)
 }
 
 /*
-funcion: sumatoria()
-esta funcion printeara el promedio de 2 numeros
-*/
+ * numberAv() - calc the average of two numbers
+ * @x: first number
+ * @y: second number
+ * return: average of two numbers
+ */
 
-float promNumeros(int x, int y)
+float numberAv(int x, int y)
 {
     int suma;
     float prom;

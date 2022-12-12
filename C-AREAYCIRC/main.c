@@ -1,20 +1,20 @@
 int main()
 {
-   int radio_c;
-   float valor_pi=3.14, area_c, circun_c;
+   int radius_c;
+   float pi_value = 3.14, area_c, circun_c;
 
-   //Pedir radio del circulo
-   printf("\nIngresar radio del circulo: ");
-   //Guardando datos
-   scanf("%d",&radio_c);
+   // Ask for radius
+   printf("\nEnter circle radius: ");
+   // save radius
+   scanf("%d", &radius_c);
 
-   //Calcular y mostrar area
-   area_c = valor_pi * radio_c * radio_c;
-   printf("\nArea del circulo es: %f",area_c);
+   // calculate and show area
+   area_c = pi_value * radius_c * radius_c;
+   printf("\nArea of the circle: %f", area_c);
 
-   //Calcular y mostrar circunferencia
-   circun_c = 2 * valor_pi * radio_c;
-   printf("\nCircunferencia del circulo es: %f",circun_c);
+   // calculate and show circumference
+   circun_c = 2 * pi_value * radius_c;
+   printf("\nCirc of the circle: %f", circun_c);
 
-   return(0);
+   return (0);
 }

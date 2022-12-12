@@ -1,12 +1,14 @@
 /*
-DEFINIR MACRO SUMATORIA PARA EVITAR LLAMADAS ERRONEAS
+define sumatoria to avoid bad func calling
+
 */
 
 #ifndef SUMATORIA
 #define SUMATORIA
 
-/*declaracion de funciones*/
+// function prototypes for sumatoria and numberAv
+
 int sumatoria(int x, int y);
-float promNumeros(int x, int y);
+float numberAv(int x, int y);
 
 #endif

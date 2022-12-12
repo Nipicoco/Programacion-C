@@ -1,30 +1,31 @@
 #include <stdio.h>
 
-// funcion para suma binaria
 int sumaBin(int a, int b)
 {
-    int c; //carry
-    while (b != 0) {
-        //encontrar carry y mandarlo a la izquierda
+    int c; // variable to store carry
+    while (b != 0)
+    {
+        // find carry and shift it left by 1 so that adding it to a gives the required sum
         c = (a & b) << 1;
-        //encontrar la suma
+        // find sum of bits of a and b
         a = a ^ b;
         b = c;
     }
-    return a;
+    return a; // return sum
 }
 
-// funcion para resta binaria
+// binary subtraction
 int restaBin(int a, int b)
 {
     int carry;
-    //tomar 2 complementos 
+    // get the 2's complement of b and add it to a, carry will be 0
     b = sumaBin(~b, 1);
 
-    while (b != 0) {
-        //encontrar carry y mandarlo a la izquierda
+    while (b != 0)
+    {
+        // while b is not 0, find carry and shift it left by 1 so that adding it to a gives the required sum
         carry = (a & b) << 1;
-        //encontrar la suma
+        // find the sum of bits of a and b once again
         a = a ^ b;
         b = carry;
     }
@@ -35,10 +36,10 @@ int main()
 {
     int numero1, numero2, sumabinaria, restabinaria;
 
-    printf("Ingresar primer valor entero: ");
+    printf("Enter first value: "); // deprecated but works
     scanf("%d", &numero1);
 
-    printf("Ingresar segundo valor entero: ");
+    printf("Enter second value: ");
     scanf("%d", &numero2);
 
     sumabinaria = sumaBin(numero1, numero2);
@@ -47,5 +48,5 @@ int main()
     printf("Suma Binaria: %d\n", sumabinaria);
     printf("Resta Binaria: %d\n", restabinaria);
 
-    return 0;
+    return 0; // return 0 to exit program
 }

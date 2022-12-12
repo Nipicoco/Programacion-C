@@ -1,57 +1,60 @@
 #include <stdio.h>
 #include <string.h>
- 
+
 /*
-Function : Extraer clases de ip's
-Argumentos : 
-1) source - String pointer que contiene la ip
-2) ipAddress - asigna octetos de ip addresses que usara para resolver clases
+Function : Extract IP Types
+Arguments :
+1) source - String pointer that contains the IP address
+2) ipAddress - assigned to the IP address in the form of an array of 4 bytes that determine the IP address type
 */
-void extraerIpAddress(unsigned char *stringFuente,short *ipAddress)
+void extraerIpAddress(unsigned char *stringBase, short *ipAddress)
 {
-    unsigned short len=0;
-    unsigned char  oct[4]={0},cnt=0,cnt1=0,i,buf[5];
- 
-    len=strlen(stringFuente);
-    for(i=0;i<len;i++)
+    unsigned short len = 0;
+    unsigned char oct[4] = {0}, cnt = 0, cnt1 = 0, i, buf[5];
+
+    /* Get the IP type and convert it to a 4 byte matrix. */
+    len = strlen(stringBase);
+    for (i = 0; i < len; i++)
     {
-        if(stringFuente[i]!='.'){
-            buf[cnt++] =stringFuente[i];
+        if (stringBase[i] != '.')
+        {
+            buf[cnt++] = stringBase[i];
         }
-        if(stringFuente[i]=='.' || i==len-1){
-            buf[cnt]='\0';
-            cnt=0;
-            oct[cnt1++]=atoi(buf);
+        if (stringBase[i] == '.' || i == len - 1)
+        {
+            buf[cnt] = '\0';
+            cnt = 0;
+            oct[cnt1++] = atoi(buf);
         }
     }
-    ipAddress[0]=oct[0];
-    ipAddress[1]=oct[1];
-    ipAddress[2]=oct[2];
-    ipAddress[3]=oct[3];
+    ipAddress[0] = oct[0];
+    ipAddress[1] = oct[1];
+    ipAddress[2] = oct[2];
+    ipAddress[3] = oct[3];
 }
 
 int main()
-{
-    unsigned char ip[20]={0};
-    short ipAddress[4];
-     
-    printf("Ingresar direccion IP (xxx.xxx.xxx.xxx format): ");
-    scanf("%s",ip);
-     
-    extraerIpAddress(ip,&ipAddress[0]);
-     
-    printf("\nDireccion IP: %03d. %03d. %03d. %03d\n",ipAddress[0],ipAddress[1],ipAddress[2],ipAddress[3]);
-    
-    if(ipAddress[0]>=0 && ipAddress[0]<=127)
-        printf("Direccion IP Clase A.\n");
-    if(ipAddress[0]>127 && ipAddress[0]<191)
-        printf("Direccion IP Clase B.\n");
-    if(ipAddress[0]>191 && ipAddress[0]<224)
-        printf("Direccion IP Clase C.\n");
-    if(ipAddress[0]>224 && ipAddress[0]<=239)
-        printf("Direccion IP Clase D.\n");
-    if(ipAddress[0]>239)
-        printf("Direccion IP Clase E.\n");
-     
+{                               // variable declaration
+    unsigned char ip[20] = {0}; // IP address
+    short ipAddress[4];         // IP address in the form of an array of 4 bytes
+
+    printf("Enter ip address (xxx.xxx.xxx.xxx format): "); // ask for IP address
+    scanf("%s", ip);                                       // save IP address
+
+    extraerIpAddress(ip, &ipAddress[0]); // extract IP address
+
+    printf("\nIP Address: %03d. %03d. %03d. %03d\n", ipAddress[0], ipAddress[1], ipAddress[2], ipAddress[3]); // show IP address
+
+    if (ipAddress[0] >= 0 && ipAddress[0] <= 127) // determine IP address type
+        printf("IP Address Class A.\n");
+    if (ipAddress[0] > 127 && ipAddress[0] < 191) // determine IP address type
+        printf("IP Address Class B.\n");
+    if (ipAddress[0] > 191 && ipAddress[0] < 224) // determine IP address type
+        printf("IP Address Class C.\n");
+    if (ipAddress[0] > 224 && ipAddress[0] <= 239) // determine IP address type
+        printf("IP Address Class D.\n");
+    if (ipAddress[0] > 239)
+        printf("IP Address Class E.\n");
+
     return 0;
 }
